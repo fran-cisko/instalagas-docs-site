@@ -76,7 +76,7 @@ div.mermaid {
 
 /* ============================================================
    Barra lateral izquierda (navegación principal)
-   Fondo: naranja de marca al 25% (tinte visible pero suave)
+   Fondo: naranja de marca al 60% (intenso)
    Resaltado de links: azul secundario (contraste legible)
    ============================================================ */
 
@@ -108,12 +108,25 @@ div.mermaid {
   font-weight: 700;
 }
 
-/* Resaltado (hover, foco y página activa): azul con contraste sobre naranja */
-.md-sidebar--primary .md-nav__link:hover,
-.md-sidebar--primary .md-nav__link:focus,
-.md-sidebar--primary .md-nav__item--active > .md-nav__link,
-.md-sidebar--primary .md-nav__item--active > .md-nav__link:hover,
-.md-sidebar--primary .md-nav__item--active > .md-nav__link:focus {
+/* El ítem activo de la nav es "sticky" y Material le pinta fondo del color
+   de la página (blanco en claro, slate en oscuro) con un halo — sobre el
+   tinte naranja se ve como un recuadro ajeno. Lo dejamos transparente.
+   Especificidad 0-5-0 > la regla de Material (0-4-0). */
+.md-sidebar--primary .md-nav--lifted > .md-nav__list > .md-nav__item--active > .md-nav__link {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+/* Resaltado (hover, foco y página activa): azul con contraste sobre naranja.
+   Se antepone [data-md-color-scheme] para alcanzar especificidad 0-4-0 y
+   ganarle a la regla de Material `.md-nav--lifted > ... > [for]` (0-4-0,
+   gris al 54%), que pinta el título de índice dentro de la sidebar; nuestra
+   hoja carga última y gana el desempate. */
+[data-md-color-scheme] .md-sidebar--primary .md-nav__link:hover,
+[data-md-color-scheme] .md-sidebar--primary .md-nav__link:focus,
+[data-md-color-scheme] .md-sidebar--primary .md-nav__item--active > .md-nav__link,
+[data-md-color-scheme] .md-sidebar--primary .md-nav__item--active > .md-nav__link:hover,
+[data-md-color-scheme] .md-sidebar--primary .md-nav__item--active > .md-nav__link:focus {
   color: var(--ig-azul);
 }
 
