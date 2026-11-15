@@ -16,10 +16,12 @@
 }
 
 /* Encabezado y pestañas en azul institucional */
+/* NOTA: NO forzar --md-default-fg-color aquí: se heredaría al modo oscuro
+   y dejaría el texto del cuerpo en gris casi negro sobre fondo oscuro.
+   Material define el color de texto correcto por esquema (claro/oscuro). */
 :root > * {
   --md-primary-fg-color: var(--ig-azul-oscuro);
   --md-primary-bg-color: #FFFFFF;
-  --md-default-fg-color: var(--ig-gris-texto);
 }
 
 /* Acentos e hipervínculos en naranja de marca */
@@ -82,16 +84,16 @@ div.mermaid {
    la cubre por completo); en desktop el fondo del tema es transparente. */
 .md-sidebar--primary,
 .md-sidebar--primary .md-sidebar__scrollwrap {
-  background-color: rgba(244, 129, 37, 0.25); /* naranja #F48125 al 25% */
+  background-color: rgba(244, 129, 37, 0.60); /* naranja #F48125 al 60% (intenso) */
 }
 
 /* Drawer móvil (hasta 76.23em): la sidebar es una capa superpuesta,
-   necesita fondo OPACO equivalente al tinte (25% naranja sobre blanco)
+   necesita fondo OPACO equivalente al tinte (60% naranja sobre blanco)
    para que no se vea el contenido de la página detrás. */
 @media screen and (max-width: 76.234375em) {
   .md-sidebar--primary,
   .md-sidebar--primary .md-sidebar__scrollwrap {
-    background-color: #FCE0C9;
+    background-color: #F8B37C; /* rgb(248,179,124) = mezcla 60% */
   }
 }
 
@@ -115,16 +117,17 @@ div.mermaid {
   color: var(--ig-azul);
 }
 
-/* Modo oscuro: tinte naranja más tenue, texto claro y resaltado naranja claro */
+/* Modo oscuro: la sidebar a 60% queda naranja quemado (~#9F5B27);
+   texto claro y resaltado casi blanco para contraste */
 [data-md-color-scheme="slate"] .md-sidebar--primary,
 [data-md-color-scheme="slate"] .md-sidebar--primary .md-sidebar__scrollwrap {
-  background-color: rgba(244, 129, 37, 0.16);
+  background-color: rgba(244, 129, 37, 0.60);
 }
 [data-md-color-scheme="slate"] .md-sidebar--primary .md-nav__link {
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.92);
 }
 [data-md-color-scheme="slate"] .md-sidebar--primary .md-nav__item--section > .md-nav__link[for] {
-  color: #FFB366;
+  color: #FFE8D2;
   font-weight: 700;
 }
 [data-md-color-scheme="slate"] .md-sidebar--primary .md-nav__link:hover,
@@ -132,14 +135,14 @@ div.mermaid {
 [data-md-color-scheme="slate"] .md-sidebar--primary .md-nav__item--active > .md-nav__link,
 [data-md-color-scheme="slate"] .md-sidebar--primary .md-nav__item--active > .md-nav__link:hover,
 [data-md-color-scheme="slate"] .md-sidebar--primary .md-nav__item--active > .md-nav__link:focus {
-  color: #FFB366;
+  color: #FFFFFF;
 }
 
-/* Drawer móvil en modo oscuro: opaco equivalente al tinte (16% naranja
+/* Drawer móvil en modo oscuro: opaco equivalente al tinte (60% naranja
    sobre el fondo slate ~#1F2129) */
 @media screen and (max-width: 76.234375em) {
   [data-md-color-scheme="slate"] .md-sidebar--primary,
   [data-md-color-scheme="slate"] .md-sidebar--primary .md-sidebar__scrollwrap {
-    background-color: #413028;
+    background-color: #9F5B27;
   }
 }
