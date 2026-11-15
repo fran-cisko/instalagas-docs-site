@@ -74,12 +74,25 @@ div.mermaid {
 
 /* ============================================================
    Barra lateral izquierda (navegación principal)
-   Fondo: naranja de marca con opacidad reducida (tinte suave)
+   Fondo: naranja de marca al 25% (tinte visible pero suave)
    Resaltado de links: azul secundario (contraste legible)
    ============================================================ */
 
-.md-sidebar--primary {
-  background-color: rgba(244, 129, 37, 0.16); /* naranja #F48125 al 16% ≈ tinte durazno */
+/* El tinte va en la sidebar Y en su scrollwrap (capa interna que
+   la cubre por completo); en desktop el fondo del tema es transparente. */
+.md-sidebar--primary,
+.md-sidebar--primary .md-sidebar__scrollwrap {
+  background-color: rgba(244, 129, 37, 0.25); /* naranja #F48125 al 25% */
+}
+
+/* Drawer móvil (hasta 76.23em): la sidebar es una capa superpuesta,
+   necesita fondo OPACO equivalente al tinte (25% naranja sobre blanco)
+   para que no se vea el contenido de la página detrás. */
+@media screen and (max-width: 76.234375em) {
+  .md-sidebar--primary,
+  .md-sidebar--primary .md-sidebar__scrollwrap {
+    background-color: #FCE0C9;
+  }
 }
 
 /* Links normales: gris oscuro de marca, legibles sobre el tinte */
@@ -103,8 +116,9 @@ div.mermaid {
 }
 
 /* Modo oscuro: tinte naranja más tenue, texto claro y resaltado naranja claro */
-[data-md-color-scheme="slate"] .md-sidebar--primary {
-  background-color: rgba(244, 129, 37, 0.12);
+[data-md-color-scheme="slate"] .md-sidebar--primary,
+[data-md-color-scheme="slate"] .md-sidebar--primary .md-sidebar__scrollwrap {
+  background-color: rgba(244, 129, 37, 0.16);
 }
 [data-md-color-scheme="slate"] .md-sidebar--primary .md-nav__link {
   color: rgba(255, 255, 255, 0.85);
@@ -119,4 +133,13 @@ div.mermaid {
 [data-md-color-scheme="slate"] .md-sidebar--primary .md-nav__item--active > .md-nav__link:hover,
 [data-md-color-scheme="slate"] .md-sidebar--primary .md-nav__item--active > .md-nav__link:focus {
   color: #FFB366;
+}
+
+/* Drawer móvil en modo oscuro: opaco equivalente al tinte (16% naranja
+   sobre el fondo slate ~#1F2129) */
+@media screen and (max-width: 76.234375em) {
+  [data-md-color-scheme="slate"] .md-sidebar--primary,
+  [data-md-color-scheme="slate"] .md-sidebar--primary .md-sidebar__scrollwrap {
+    background-color: #413028;
+  }
 }
