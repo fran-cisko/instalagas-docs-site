@@ -71,3 +71,52 @@ div.mermaid {
   color: #FFFFFF;
   font-size: 0.72rem;
 }
+
+/* ============================================================
+   Barra lateral izquierda (navegación principal)
+   Fondo: naranja de marca con opacidad reducida (tinte suave)
+   Resaltado de links: azul secundario (contraste legible)
+   ============================================================ */
+
+.md-sidebar--primary {
+  background-color: rgba(244, 129, 37, 0.16); /* naranja #F48125 al 16% ≈ tinte durazno */
+}
+
+/* Links normales: gris oscuro de marca, legibles sobre el tinte */
+.md-sidebar--primary .md-nav__link {
+  color: var(--ig-gris-texto);
+}
+
+/* Títulos de sección: azul secundario en negrita */
+.md-sidebar--primary .md-nav__item--section > .md-nav__link[for] {
+  color: var(--ig-azul);
+  font-weight: 700;
+}
+
+/* Resaltado (hover, foco y página activa): azul con contraste sobre naranja */
+.md-sidebar--primary .md-nav__link:hover,
+.md-sidebar--primary .md-nav__link:focus,
+.md-sidebar--primary .md-nav__item--active > .md-nav__link,
+.md-sidebar--primary .md-nav__item--active > .md-nav__link:hover,
+.md-sidebar--primary .md-nav__item--active > .md-nav__link:focus {
+  color: var(--ig-azul);
+}
+
+/* Modo oscuro: tinte naranja más tenue, texto claro y resaltado naranja claro */
+[data-md-color-scheme="slate"] .md-sidebar--primary {
+  background-color: rgba(244, 129, 37, 0.12);
+}
+[data-md-color-scheme="slate"] .md-sidebar--primary .md-nav__link {
+  color: rgba(255, 255, 255, 0.85);
+}
+[data-md-color-scheme="slate"] .md-sidebar--primary .md-nav__item--section > .md-nav__link[for] {
+  color: #FFB366;
+  font-weight: 700;
+}
+[data-md-color-scheme="slate"] .md-sidebar--primary .md-nav__link:hover,
+[data-md-color-scheme="slate"] .md-sidebar--primary .md-nav__link:focus,
+[data-md-color-scheme="slate"] .md-sidebar--primary .md-nav__item--active > .md-nav__link,
+[data-md-color-scheme="slate"] .md-sidebar--primary .md-nav__item--active > .md-nav__link:hover,
+[data-md-color-scheme="slate"] .md-sidebar--primary .md-nav__item--active > .md-nav__link:focus {
+  color: #FFB366;
+}
