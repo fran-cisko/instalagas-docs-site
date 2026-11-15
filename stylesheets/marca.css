@@ -1,0 +1,73 @@
+/* ============================================================
+   INSTALAGAS · Documentación Interna — hoja de marca
+   Fuente: guía de marca oficial (instalagas.md §7.3)
+   Naranja #F48125 · Naranja oscuro #DB6404 · Azul #072D7E ·
+   Azul institucional #051F57 · Gris texto #212121 · Gris medio #757575
+   ============================================================ */
+
+:root {
+  --ig-naranja: #F48125;
+  --ig-naranja-oscuro: #DB6404;
+  --ig-azul: #072D7E;
+  --ig-azul-oscuro: #051F57;
+  --ig-gris-texto: #212121;
+  --ig-gris-medio: #757575;
+  --ig-fondo-claro: #F2F2F2;
+}
+
+/* Encabezado y pestañas en azul institucional */
+:root > * {
+  --md-primary-fg-color: var(--ig-azul-oscuro);
+  --md-primary-bg-color: #FFFFFF;
+  --md-default-fg-color: var(--ig-gris-texto);
+}
+
+/* Acentos e hipervínculos en naranja de marca */
+:root > * {
+  --md-accent-fg-color: var(--ig-naranja);
+  --md-typeset-a-color: var(--ig-naranja-oscuro);
+}
+
+/* Modo oscuro: mantener identidad de marca */
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: var(--ig-azul-oscuro);
+  --md-accent-fg-color: var(--ig-naranja);
+  --md-typeset-a-color: var(--ig-naranja);
+}
+
+/* Titulares en azul secundario */
+.md-typeset h1,
+.md-typeset h2 {
+  color: var(--ig-azul);
+}
+[data-md-color-scheme="slate"] .md-typeset h1,
+[data-md-color-scheme="slate"] .md-typeset h2 {
+  color: #9ec3ff;
+}
+
+/* Tablas: encabezado azul institucional, cebrado gris claro */
+.md-typeset thead tr {
+  background-color: var(--ig-azul);
+}
+.md-typeset thead th {
+  color: #FFFFFF;
+}
+.md-typeset tbody tr:nth-child(even) {
+  background-color: var(--ig-fondo-claro);
+}
+[data-md-color-scheme="slate"] .md-typeset tbody tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+/* Diagramas Mermaid centrados */
+.mermaid,
+div.mermaid {
+  text-align: center;
+}
+
+/* Pie institucional (copyright) más visible */
+.md-footer-copyright,
+.md-copyright {
+  color: #FFFFFF;
+  font-size: 0.72rem;
+}
